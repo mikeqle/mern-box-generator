@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const ColorDisplay = (props) => {
+    const { colorList, dimensionList } = props;
+
+    const boxStyle = {
+        height: "100px",
+        width: "100px",
+        margin: "10px",
+        display: "inline-block"
+    }
+
+    const boxContainer = {
+        minHeight: "200px",
+        margin: "auto"
+    }
+
     return(
-        <ul>
+        <div style={ boxContainer }>
             {
-                props.colorList.map( (color, index) => 
-                <li key={ index } style={{backgroundColor: {color} }} ></li>
+                colorList.map( (color, index) => 
+                <p key={ index } style={ { ...boxStyle, backgroundColor: color, width: dimensionList[index]+"px", height: dimensionList[index]+"px" } } ></p>
                 )
             }
-        </ul>
+        </div>
     );
 };
 
